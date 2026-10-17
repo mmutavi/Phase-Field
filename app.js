@@ -1,0 +1,1 @@
+const $=s=>document.querySelector(s),canvas=$('#scope'),ctx=canvas.getCo
