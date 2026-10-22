@@ -1,1 +1,1 @@
-const $=s=>document.querySelector(s),canvas=$('#scope'),ctx=canvas.getCo
+const $=s=>document.querySelector(s),canvas=$('#scope'),ctx=canvas.getContext('2d');let ac=null,analyser=null,osc=[],gain=[],playing=false,raf=0;
