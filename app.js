@@ -1,2 +1,2 @@
 const $=s=>document.querySelector(s),canvas=$('#scope'),ctx=canvas.getContext('2d');let ac=null,analyser=null,osc=[],gain=[],playing=false,raf=0;
-function fit(){const r=canvas.getBoundingClientRect(),d=devicePixelRatio||1;canvas.width=r.widt
+function fit(){const r=canvas.getBoundingClientRect(),d=devicePixelRatio||1;canvas.width=r.width*d;canvas.height=r.height*d;ctx.setTransform(d,0,0,d,0,0)}addEventListener('resize',fit);fit();
