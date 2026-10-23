@@ -1,3 +1,3 @@
 const $=s=>document.querySelector(s),canvas=$('#scope'),ctx=canvas.getContext('2d');let ac=null,analyser=null,osc=[],gain=[],playing=false,raf=0;
 function fit(){const r=canvas.getBoundingClientRect(),d=devicePixelRatio||1;canvas.width=r.width*d;canvas.height=r.height*d;ctx.setTransform(d,0,0,d,0,0)}addEventListener('resize',fit);fit();
-function sync(){const f=+$ ('#freq').value,m=+$ ('#motion').value/100,h=+$ ('#harm').value;$('#freqOut').value=f+' Hz';$('#motionOut').value=m.toFixed(2);$('#harmOut
+function sync(){const f=+$ ('#freq').value,m=+$ ('#motion').value/100,h=+$ ('#harm').value;$('#freqOut').value=f+' Hz';$('#motionOut').value=m.toFixed(2);$('#harmOut').value=h;if(!playing)return;osc.forEach((o,i)=>{o.frequency.setTargetAtTime(f*(i
