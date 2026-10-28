@@ -1,4 +1,4 @@
 const $=s=>document.querySelector(s),canvas=$('#scope'),ctx=canvas.getContext('2d');let ac=null,analyser=null,osc=[],gain=[],playing=false,raf=0;
 function fit(){const r=canvas.getBoundingClientRect(),d=devicePixelRatio||1;canvas.width=r.width*d;canvas.height=r.height*d;ctx.setTransform(d,0,0,d,0,0)}addEventListener('resize',fit);fit();
 function sync(){const f=+$ ('#freq').value,m=+$ ('#motion').value/100,h=+$ ('#harm').value;$('#freqOut').value=f+' Hz';$('#motionOut').value=m.toFixed(2);$('#harmOut').value=h;if(!playing)return;osc.forEach((o,i)=>{o.frequency.setTargetAtTime(f*(i+1)*(1+(Math.sin(Date.now()/1800+i*2)*m*.018)),ac.currentTime,.2);gain[i].gain.setTargetAtTime((.11/(i+1))*(1-m*.35),ac.currentTime,.3)});if(osc.length!==h)rebuild()}
-function rebuild(){if(!ac)return;osc.forEach(o=>{try{o.stop()}catch{}});osc=[];gain=
+function rebuild(){if(!ac)return;osc.forEach(o=>{try{o.stop()}catch{}});osc=[];gain=[];analyser=ac.createAnalyser();analyser.fftSize=1024;let master=ac.createGain();maste
